@@ -209,5 +209,5 @@ export function pcmToWav(pcmData: Uint8Array, sampleRate: number = 24000): Blob 
   view.setUint16(34, 16, true);
   view.setUint32(36, 0x64617461, false);
   view.setUint32(40, pcmData.length, true);
-  return new Blob([header, pcmData], { type: 'audio/wav' });
+  return new Blob([header, new Uint8Array(pcmData)], { type: 'audio/wav' });
 }
